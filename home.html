@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Channy Realtor</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link href="https://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Moulpali" rel="stylesheet">
+    
+    <style>
+        
+        @font-face{ font-family: 'Scope One', serif;}
+        @font-face{font-family: 'Raleway', sans-serif;}
+        
+        body {
+        height: 100%; margin: 0; font-family: 'Scope One', serif; color: #777; overflow-x: hidden
+        }
+      
+
+            .carousel-fade .carousel-inner .item {
+              opacity: 0;
+              transition-property: opacity;
+            }
+
+            .carousel-fade .carousel-inner .active {
+              opacity: 1;
+            }
+
+            .carousel-fade .carousel-inner .active.left,
+            .carousel-fade .carousel-inner .active.right {
+              left: 0;
+              opacity: 0;
+              z-index: 1;
+            }
+
+            .carousel-fade .carousel-inner .next.left,
+            .carousel-fade .carousel-inner .prev.right {
+              opacity: 1;
+            }
+
+            .carousel-fade .carousel-control {
+              z-index: 2;
+            }
+
+            /*
+            WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+            now override the 3.3 new styles for modern browsers & apply opacity
+            */
+            @media all and (transform-3d), (-webkit-transform-3d) {
+                .carousel-fade .carousel-inner > .item.next,
+                .carousel-fade .carousel-inner > .item.active.right {
+                  opacity: 0;
+                  -webkit-transform: translate3d(0, 0, 0);
+                          transform: translate3d(0, 0, 0);
+                }
+                .carousel-fade .carousel-inner > .item.prev,
+                .carousel-fade .carousel-inner > .item.active.left {
+                  opacity: 0;
+                  -webkit-transform: translate3d(0, 0, 0);
+                          transform: translate3d(0, 0, 0);
+                }
+                .carousel-fade .carousel-inner > .item.next.left,
+                .carousel-fade .carousel-inner > .item.prev.right,
+                .carousel-fade .carousel-inner > .item.active {
+                  opacity: 1;
+                  -webkit-transform: translate3d(0, 0, 0);
+                          transform: translate3d(0, 0, 0);
+                }
+            }
+        .item{ width: 100%; height: 500px}
+        .navbar-brand{margin-top: -15px;}
+        
+        #grad {
+          background: white; /* For browsers that do not support gradients */
+          background: -webkit-linear-gradient(left top, #Ffffff, black); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(bottom right,#ffffff, black); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(bottom right, #Ffffff, black); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(to bottom , #Ffffff,black); /* Standard syntax */
+        }
+        
+         #grad2 {
+          background: white; /* For browsers that do not support gradients */
+          background: -webkit-linear-gradient(left top,  black,#FAFAFA); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(bottom right, black,#FAFAFA); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(bottom right,  black,#FAFAFA); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(to bottom , black, #FAFAFA); /* Standard syntax */
+        }
+
+        .overflow{ width: 300px;
+        height: 200px;
+        overflow: scroll}
+        
+        .image-side:hover{
+            width:1500px;
+            -webkit-transition: width 5s;
+            transition: width 5s;
+        }
+       
+        
+       
+       
+        .bg-lightgrey{background-color: #fafafa; }
+        .bg-white{background-color: white}
+        
+        /* Safari 4.0 - 8.0 */
+        @-webkit-keyframes move {
+             0%   {opacity:0; transform: scale(1)}
+            100% {opacity:1; transform: scale(2)}
+        }
+        /* Standard syntax */
+        @keyframes move {
+            0%   {opacity:0; transform: scale(1)}
+            100% {opacity:1; transform: scale(2)}
+        }
+        .text_animation{ text-align: center; -webkit-animation: move 2s ; 
+                                                    animation: move 2s ; }
+        
+        
+       
+/*        .portfolio-gallery{ float:left; width: 310px; height: auto}*/
+        
+        .portfolio-gallery1{background-color:#787878; height: 100px}
+        .portfolio-gallery1:hover { background-color:#d2d3af; -webkit-transition: background-color 1S; /* For Safari 3.1 to 6.0 */ transition: background-color 1S;}
+        .portfolio-gallery1:active { background-color:#d2d3af; -webkit-transition: background-color 1S; /* For Safari 3.1 to 6.0 */ transition: background-color 1S;}
+        
+        
+        .portfolio-gallery2{ background-color:#334966; height: 100px}
+        .portfolio-gallery2:hover { background-color:aquamarine; -webkit-transition: background-color 1S; /* For Safari 3.1 to 6.0 */ transition: background-color 1S;}
+        .portfolio-gallery2:active { background-color:aquamarine; -webkit-transition: background-color 1S; /* For Safari 3.1 to 6.0 */ transition: background-color 1S;}
+        
+        .portfolio-gallery3{background-color:black; height: 100px}
+        .portfolio-gallery3:hover { background-color:white; -webkit-transition: background-color 1S; /* For Safari 3.1 to 6.0 */ transition: background-color 1S;}
+        .portfolio-gallery3:active { background-color:white; -webkit-transition: background-color 1S; /* For Safari 3.1 to 6.0 */ transition: background-color 1S;}
+        
+        
+        .portfolio-dropdown1{background-image:url("top%20rated.jpeg"); background-size: 100% ;}
+        
+        .Just_Sold_Gallery{Width:100%; height: 150px; overflow-x: scroll; overflow-y: hidden; white-space: nowrap; margin: 10px  0px 10px 0px}
+        #Photo_Gallery{height: 150px; width: auto;  }
+        #Photo_Gallery:hover {height: 150px; width: auto; }
+        
+/*      Styling for Video gallery */
+        img {max-width: 100%; height: auto;}
+/* 
+  This is the starting grid for each video with thumbnails 5 across for the largest screen size.
+  It's important to use percentages or there may be gaps on the right side of the page. 
+  */
+        .video-container{  text-align: center; padding-bottom: 5%; padding-top: 30px; }
+        
+         .desc{padding: 15px; text-align: center}
+/* These are my preferred rollover styles. */
+        .video_img {width:250px;height: auto; display: block; margin: auto; margin-bottom: 10px; margin-top: 10px; background-color: white; box-shadow:0 5px 10px rgba(0,0,0,.2)}
+        .video_img:hover .play, .video_img:hover, .video_img:focus { opacity:0.80; display: block}
+        
+        .play{
+            position : absolute;
+            display:none;
+            top:25%; 
+            left:40%;
+            z-index:100;
+            color: white;
+        } 
+        .back{ position : absolute; z-index: 100; color: white; height: 50px; width: 50px; background-color: gray; margin: 50px 0 0 -15px; opacity: .9}
+        .next{ position : absolute; z-index: 101; color: white; height: 50px; width: 50px; background-color: gray; margin-left: 96%; margin-top: 50px ; opacity: .9; }
+       
+        
+        
+        
+/*
+        .vid-gallery{ Width:100%; height: 200px; overflow-x: scroll; overflow-y: hidden; white-space: nowrap; background-color: black; display: inline-block}
+        #vid-gallery{ border: 1px solid #ccc; width: auto; height: 100%}
+        #vid-gallery:hover {border: 3px solid #777;}
+       
+        
+*/
+        
+/*        
+        .portfolio-dropdown1 h1{ display: none}
+        
+        .portfolio-dropdown1:hover h1{ display: block}
+*/
+
+        
+        
+/*       Image styling*/     
+        .bgimg-1, .bgimg-2{ position: relative; opacity: 0.65;background-attachment: fixed;background-position: center;background-repeat: no-repeat;background-size: cover;}
+        .bgimg-3{ position: relative;background-attachment: fixed;background-position: center;background-repeat: no-repeat;background-size: cover;}
+        
+        .grey-img{ width: 100%; height: auto; -webkit-filter:grayscale(100%);filter:grayscale(100%)}
+        .grey-img:hover{  width: 100%; height: auto;-webkit-filter:grayscale(0);filter:grayscale(0); -webkit-transition: filter 1s;transition: filter 1s}
+        
+        
+        .bgimg-1 {background-image: url(TopBanner.jpg);min-height: 100%; }
+        .bgimg-2 {background-image: url(TopBanner.jpg) ; min-height: 200px;-webkit-filter:blur(5px);filter:blur(5px)}
+        .bgimg-3 {background-image: url(money.jpg);min-height: 300px;}
+        
+        .caption{width: 300px; height: 120px; position: absolute;left:10% ; top: 25%;text-align: center; background-color: aliceblue;color: #000}
+        .caption:hover{ width: 300; height: 120; border: 2px solid #334966; color:#334966 }
+        
+        .parallax{background-image:url("top%20rated.jpeg"); height: 500px ; background-attachment: fixed ; background-position: center; background-repeat: no-repeat; background-size: cover;}
+        
+
+        #tab1{
+            background-color: #FAFAFA; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, .5); 
+        }
+        .tab{
+            text-decoration: none
+        }
+    
+        .div-contact{background-color: black;}
+        
+        
+        .scroll_bar_hightlight:hover{ opacity: .55}
+
+        /* Style all font awesome icons */
+        .fa {padding: 10px;
+            font-size: 20px;
+            width: 40px;
+            text-align: center;
+            text-decoration: none;}
+       
+
+        /* Set a specific color for each brand */
+
+        .fa-facebook {color: white; }
+        .fa-facebook:hover {background: #3B5998;color: white; border-radius: 50%;}
+        .fa-twitter { color: white;}
+        .fa-twitter:hover { background: #55ACEE;color: white; border-radius: 50%;}
+        
+        .fa-instagram { color: white;}
+        .fa-instagram:hover { color: white;background: #ff00bf; border-radius: 50%}
+        .fa-linkedin {color: white;}
+        .fa-linkedin:hover {background: #007bb5; color: white;  border-radius: 50%;}
+        .fa-youtube {color: white;}
+        .fa-youtube:hover {background: #bb0000;color: white; border-radius: 50%;}
+        
+        .border-left{ border: 2px solid white ;border-right: 0;border-top: 0;border-bottom: 0;}
+        
+        #map {
+            margin-top: 30px; margin-left: -20px;
+           width: 100%;
+           height: 300px;
+           
+         }
+        
+        
+    </style>
+  </head>
+  <body data-spy="scroll" data-toggle=".navbar" data-offset="50">
+
+      
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            <a class="navbar-brand" href="#1"><img src="logo.jpeg" style="width:90px; height:auto; border-radius: 5px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+           
+              <div class="collapse navbar-collapse" id="dropdown1" >
+              <ul class="nav navbar-nav navbar-right " >
+                <li class="active"><a href="#0">HOME<span class="sr-only">(current)</span></a></li>
+                
+                <li><a href="#1">PORTFOLIO</a></li>
+                <li><a href="#2">BUYER/SELLER INFO</a></li>
+<!--
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >LISTING PROPERTIES<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#3">RESIDENTIAL</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#3">COMMERCIAL</a></li>
+                  </ul>
+                </li>
+--> 
+                <li><a href="#5">CONTACT</a></li>
+                <li><a href="#4">ABOUT</a></li>
+                
+              </ul>
+            
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+      
+        </nav>   
+    
+   
+    <div class="carousel slide carousel-fade" id="myCarousel" data-ride="carousel">
+        <div class="carousel-inner" id="0">
+            <div class="item active">
+                <img src="pexels-photo-5.jpeg" class="img-responsive center-block " style="margin-top: 50px">
+            </div>
+            <div class="item">
+                <img src="pexels-photo-20.jpeg" class="img-responsive center-block " style="margin-top: 50px; ">
+            </div>
+            <div class="item">
+                <img src="pexels-photo-32.jpeg" class="img-responsive center-block " style="margin-top: 50px; ">
+               
+            </div>
+<!--            Left and right controls 
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span> 
+            </a>-->
+        </div><br>
+    </div>
+           
+  
+        <div class="container " >
+            <div class="col-md-4 container profile-pic"><img src="Channy1.jpg" class="img-responsive center-block img-circle" alt="Cinque Terre" width="150" >
+            </div>  
+            <div class="col-md-8 container"><h4 class="left "> "<i>Welcome to the Re/Max Producer team for all real estate information and service. Our goal is to provide an uncompromised real estate service for all buyers and sellers thoughout California. Looking to buy or sell your properties could be stressful; however with our team, we promise to close your transaction with ease and unforgettable experience.</i>" <b> Ms. CHANNY CHOR </b></h4>
+            </div>
+        </div><br>
+    
+   
+    <hr style="height:1px; border:none; color:grey ; background-color:grey; width:70%"><br>
+    
+    
+    
+
+      
+    <div class=" container-fluid" id="1">
+                <h5 align=center>Specialization in Residential &amp; Commercial Properties</h5>
+                <h2 align="center">THE PORTFOLIO</h2> <br>
+                    
+                <div class="row">
+                    <div class="col-md-3 portfolio-gallery1 " data-toggle="collapse" data-target="#hide_client">
+                        <br><h3 style="font-size:20px; color:white; display: inline; " class="fa">&#xf006; &#xf006; &#xf006; &#xf006; &#xf006;</h3> <h3 style="font-size:20px; color:white; display: inline "> <br> <span style="font-size:30px">A</span>PPRECIATED <span style="font-size:30px">C</span>LIENTS  </h3>
+                    
+                    </div>
+                    
+                    
+                    
+                    
+                     <div class="col-md-3 portfolio-gallery2 " data-toggle="collapse" data-target="#experiences">
+                         <br><h3 style="font-size:20px; color:white; display: inline; " class="fa"> &#xf0ae;</h3><br> <h3 style="font-size:20px; color:white; display: inline; "><span style="font-size:30px">E</span>XPERIENCES</h3> 
+                       
+                         
+                    </div>
+                     <div class="col-md-3 portfolio-gallery1 " data-toggle="collapse"  data-target="#hide_just_sold" >
+                         <br> <h3 style="font-size:20px; color:white; display: inline;" class="fa">&#xf080;</h3><br> <h3 style="font-size:20px; color:white; display: inline;"> <span style="font-size:30px">T</span>RANSACTIONS</h3>
+                         
+                       
+                    </div>
+                     <div class="col-md-3 portfolio-gallery2 " >
+                         <br><h3 style="font-size:20px; color:white; display: inline;" class="fa">&#xf219;</h3> <br> <h3 style="font-size:20px; color:white; display: inline;"><span style="font-size:30px">A</span>CHIEVEMENT</h3>
+                         
+                  
+                    </div>
+                    
+                    
+                </div>
+                <div class="row">
+                    <div class="Just_Sold_Gallery collapse" id="hide_just_sold">
+                   
+                        <img id="Photo_Gallery" src="JustSold1.jpg">
+                        <img id="Photo_Gallery" src="JustSold2.jpg">
+                        <img id="Photo_Gallery" src="JustSold3.jpg">
+                        <img id="Photo_Gallery" src="JustSold4.jpg">
+                        <img id="Photo_Gallery" src="JustSold5.jpg">
+                        <img id="Photo_Gallery" src="JustSold6.jpg">
+                        <img id="Photo_Gallery" src="JustSold7.jpg">
+                    </div>
+                    
+                    <div class="Just_Sold_Gallery collapse" id="hide_client">
+                        <img id="Photo_Gallery" src="Clien1.jpg">
+                        <img id="Photo_Gallery" src="Clien2.jpg">
+                        <img id="Photo_Gallery" src="Clien3.jpg">
+                        <img id="Photo_Gallery" src="Clien4.jpg">
+                         <img id="Photo_Gallery" src="Clien5.jpg">
+                         <img id="Photo_Gallery" src="Clien6.jpg">
+                         <img id="Photo_Gallery" src="Clien7.jpg">
+                         <img id="Photo_Gallery" src="Clien8.jpg">
+                         <img id="Photo_Gallery" src="Clien9.jpg">
+                         <img id="Photo_Gallery" src="Clien10.jpg">
+                         <img id="Photo_Gallery" src="Clien11.jpg">
+                         <img id="Photo_Gallery" src="Clien12.jpg">
+                         <img id="Photo_Gallery" src="Clien13.jpg">
+                         <img id="Photo_Gallery" src="Clien14.jpg">
+                         <img id="Photo_Gallery" src="Clien15.jpg">
+                         <img id="Photo_Gallery" src="Clien16.jpg">
+                     </div>
+                    <div id=experiences class="bgimg-1 collapse" >
+                    <div class="row" style=" height:300px " ><br><br><br><br>
+                           
+                           <h3 class="text_animation" style="transform: scale(200%); color:white"><b>MORE THAN TEN YEARS OF EXPERIENCES IN ESTATE BUSINESS</b></h3>
+                           
+                    </div>
+                    </div>
+                </div>      
+                        
+                        
+                   
+        
+
+                <div class="row"> 
+                    <div id=reviews class="container-fluid bgimg-1 collapse in">
+                        <div class="container-fluid" style=" height:300px; margin-top: 10%"><h1 align=center style="font-family: 'Moulpali', cursive; font-size: 60px; color: #D1BB92"> និយាយភាសាខ្មែរ</h1>
+                        </div>
+                       
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="row">
+                        <div class="container scroll_bar_hightlight"  data-toggle=collapse data-target="#reviews" >
+                            <h4 align=center > Click For More Information </h4>
+                            <h3 align=center style=" ;font-size: 150%; transform: rotate(90deg) "><span class="glyphicon">&#xe080;</span></h3>
+                        </div>
+                        
+                    </div>
+                    
+                     <div id=reviews class="bgimg-2" ><br>
+                       
+                       
+                    </div>
+    
+                </div>
+            </div> 
+
+     
+      
+      
+    <div class="bg-white container-fluid" id="2"><BR>
+        <h6 align=center> READY TO OWN A HOME? NEED A BIGGER ONE? OR LOOK FOR A BUSINESS PROPERTY? THEN IT'S TIME TO GET A CONSULTANT!!!</h6>
+        <h6 align=center> HERE ARE INFOMATION YOU MIGHT WANT TO KNOW </h6>
+        <h2 align="center"> THE BUYERS &amp; SELLERS </h2>
+        <br></BR>
+    </div>
+      
+  
+      
+        <div class="container-fliud" id="grad">
+            <div class="row">
+                <div class="col-sm-8 video-container ">
+
+                  <iframe id="vid_frame" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fchannypartnerrealtor%2Fvideos%2F837579726310363%2F&show_text=0&width=560" width="90%" height="550" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe> 
+                </div>
+                <div class="col-sm-4 ">
+                    <div id="map"></div>
+                    <h5 ><i style="font-size:24px" class="fa "><font color="white">&#xf2ba;</font></i><font color="white"> OFFICE </font> </h5>
+
+
+                    <h5><font color="white"> 1360 E Anaheim St, # 106, Long Beach, California 90813</font></h5>
+                    <h4 style="font-family:'Raleway', sans-serif; color: white">FOLLOW US:</h4></div>
+                    <a href="https://www.facebook.com/channypartnerrealtor/?ref=br_rs" class="fa fa-facebook"></a>
+                    <a href="https://twitter.com/ChannyChor?lang=en" class="fa fa-twitter"></a>
+                    <a href="https://www.youtube.com/channel/UCciyPhfbT5Z_1n0AI0rdLyg/videos" class="fa fa-youtube"></a>
+                    <a href="https://www.linkedin.com/in/channy-annee-chor-a1603a2a/" class="fa fa-linkedin"></a>
+                    <a href="https://www.instagram.com/channy_khmer_realtor_/" class="fa fa-instagram"></a>
+                    
+
+            </div>
+         </div>
+            <div class="container-fluid" style="background-color: black">
+             
+
+                        <div class="col-sm-3" onClick="document.getElementById('vid_frame').src='https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fchannypartnerrealtor%2Fvideos%2F837579726310363%2F&'">
+                          <div class="video_img"><img src="Thumbnail2.png">
+                          <div class="desc"><h4>INTRODUCTION</h4></div>
+                            <div class="play"><span class="glyphicon" style="font-size:70px">&#xe072;</span></div>
+                        </div>
+                        </div>
+                      
+
+                        <div class="col-sm-3" onClick="document.getElementById('vid_frame').src='https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fchannypartnerrealtor%2Fvideos%2F816557995079203%2F&show_text=0&width=560'">
+                          <div class="video_img"><img src="Thumbnail1.png">
+                          <div class="desc"><h4> TYPE OF PROPERTIES </h4></div>
+                            <div class="play"><span class="glyphicon" style="font-size:70px">&#xe072;</span></div>
+                        </div>
+                        </div>
+                        
+                        <div class="col-sm-3" onClick="document.getElementById('vid_frame').src='https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fchannypartnerrealtor%2Fvideos%2F834388793296123%2F&show_text=0&width=560'">
+                          <div class="video_img"><img src="Thumbnail3.png">
+                          <div class="desc"><h4> FEES AND COSTS </h4></div>
+                            <div class="play"><span class="glyphicon" style="font-size:70px">&#xe072;</span></div>
+                        </div>
+                        </div>
+                
+                        <div class="col-sm-3" onClick="document.getElementById('vid_frame').src='https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fchannypartnerrealtor%2Fvideos%2F810075132394156%2F&show_text=0&width=560'">
+                          <div class="video_img"><img src="Thumbnail4.png">
+                          <div class="desc"><h4> HOW TO LOAN </h4></div>
+                            <div class="play"><span class="glyphicon" style="font-size:70px">&#xe072;</span></div>
+                        </div>
+                        </div>
+                
+                        
+       
+           
+            
+            </div>
+
+    
+    
+    <div class="div-contact container-fluid" id="5">
+        <br><br>
+        <div class="col-lg-4">
+            <h3> <font color="white">CALIFORNIA REAL ESTATE LICENSE</font></h3>
+        </div>
+        <div class="col-lg-4 border-left">
+            <h4> <font color="white">CHANNY CHOR<br></font></h4>
+            <h5> <font color="white">CalBRE# 01836138</font></h5>
+            <h5> <font color="white">(213) 608 6408</font></h5>
+            <h5> <font color="white">channyrealtor@gmail.com</font></h5>
+        </div>
+        
+        <div class="col-lg-4 border-left">
+            <h4><font color="white"> CHANLY CHOR<br></font></h4>
+            <h5><font color="white"> CalBRE# 02016701</font></h5>
+            <h5> <font color="white">(626) 756 0951 </font></h5>
+            <h5> <font color="white"></font></h5>
+        </div>
+        
+        
+           
+        <br><br>
+    </div>
+          
+      <div class="bg-white container-fluid" id="4"><br>
+        <h2 align="center">ABOUT</h2>
+        <div class="row">
+            
+
+            <div class="container">
+                <h5 align=center>Channy is a Cambodian American born in Kompong Thom Province and moved to the United States in 2003. For the fact that she loves dealing and consulting customers, She got herself a real estate licence in 2007. Over the 10 years, she has helped hundred of clients to get their dream house throughout California especially in Cambodian communities. She has been one of the Reimax top producers for many consecutive years; and the most importantly, she sold many properties that values over a million dollars. Channys resilience, thoughtfulness, and the fact that she is willing to go extra miles to ensure her client get a smooth and pleasure experience, make her standout among the crowd.</h5>
+            </div><br>
+        </div>
+       
+      
+    </div>
+    <div class="container-fluid" style="background-color:#292929; height:50px; margin-bottom: -50px "><br>
+    @2017 channypartnerrealtor. All Right Reserved. 
+    </div>
+      
+    
+      
+
+      
+      
+   
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOZFrXAs1BFto_Ew2tL6TLIvMvZpadQtQ&callback=initMap">
+    </script>
+   <script>
+     
+      function initMap() {
+        var myLatLng = {lat: 33.782273, lng: -118.174456};
+
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          scrollwheel: false,
+          zoom: 15
+        });
+
+        // Create a marker and set its position.
+        var marker = new google.maps.Marker({
+          map: map,
+          position: myLatLng,
+          title: 'Hello World!'
+        });
+      }
+
+
+    </script>
+
+      </br>
+     
+    </body>
+</html>
